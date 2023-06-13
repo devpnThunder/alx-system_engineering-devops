@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -d -a -empty
+find . -empty | cut -d / -f 1
