@@ -1,0 +1,28 @@
+1. Firewalls (x3):
+    - Firewalls are added to control and monitor incoming and outgoing traffic to and from the servers. They help enforce security policies, filter malicious traffic, and prevent unauthorized access to the servers.
+  
+2. SSL Certificate for HTTPS:
+    - An SSL certificate is added to encrypt traffic between the server and the client's browser, ensuring data privacy and security. This is particularly important for protecting sensitive information such as login credentials and personal data transmitted over the internet.
+
+3. Monitoring Clients (x3):
+    - Monitoring clients are installed on each server to collect performance metrics, system logs, and other relevant data. This allows for proactive monitoring of server health, identifying potential issues, and ensuring optimal performance.
+
+Description:
+
+- Firewalls: Added for security purposes to control traffic flow and protect against unauthorized access.
+  
+- HTTPS: Traffic is served over HTTPS to encrypt data transmitted between the server and the client, enhancing security and protecting user privacy.
+  
+- Monitoring: Used to monitor server performance, detect anomalies, and troubleshoot issues proactively, ensuring optimal uptime and performance.
+
+- Monitoring Tool Data Collection: The monitoring tool collects data by periodically querying system metrics (CPU usage, memory usage, disk space, etc.) and log files from the servers. This data is then aggregated, analyzed, and presented through a monitoring dashboard.
+
+- Monitoring Web Server QPS (Queries Per Second): To monitor web server QPS, you would track the number of HTTP requests received by the web server per second using the monitoring tool. This can help identify spikes in traffic, optimize server performance, and plan for scalability.
+
+Issues with this Infrastructure:
+
+1. Terminating SSL at the Load Balancer Level: This could be an issue because it adds an extra hop where the SSL decryption and encryption take place, potentially introducing latency and creating a single point of failure for SSL termination.
+  
+2. Single MySQL Server Accepting Writes: This is a single point of failure (SPOF) for write operations. If the MySQL server fails, write operations will be disrupted, leading to potential data loss or downtime.
+  
+3. Identical Server Components: Having servers with identical components (database, web server, and application server) might lead to a lack of diversity in the infrastructure, making it susceptible to widespread failures caused by software bugs, security vulnerabilities, or hardware failures affecting all servers simultaneously. It's generally recommended to diversify server configurations to mitigate risks and improve fault tolerance.

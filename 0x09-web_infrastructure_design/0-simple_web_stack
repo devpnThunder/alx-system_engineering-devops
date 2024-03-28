@@ -1,0 +1,32 @@
+Server: A server is a computer system that provides services or resources to other computers, known as clients, over a network. In this case, our server is hosting the website www.foobar.com.
+
+Domain Name: The domain name (foobar.com) is a human-readable address used to access resources on the internet. It provides a way for users to easily remember and access websites without needing to remember the underlying IP address. The www subdomain is commonly used as a prefix for web servers, making www.foobar.com the address for our website.
+
+DNS Record: The www DNS record in www.foobar.com is a CNAME record. It points to the domain foobar.com, which in turn resolves to the server's IP address (8.8.8.8 in this case).
+
+Web Server (Nginx): The web server's role is to handle HTTP requests from clients (such as web browsers) and serve web pages or other web content in response. Nginx is a popular web server software known for its performance, stability, and scalability.
+
+Application Server: The application server hosts the application codebase. It is responsible for executing the application logic and generating dynamic content. For example, it could handle user authentication, database interactions, and business logic. In this scenario, we'll assume the application server is running a PHP application.
+
+Application Files: The application files contain the codebase for the website's functionality. This could include HTML, CSS, JavaScript, and server-side scripts (e.g., PHP files) that are executed by the application server.
+
+Database (MySQL): The database stores and manages the website's data. It could include user accounts, content, configuration settings, and more. MySQL is a popular relational database management system used for web applications.
+
+When a user requests www.foobar.com in their web browser:
+
+1. The browser resolves the domain name www.foobar.com to the server's IP address (8.8.8.8) using DNS.
+2. The browser sends an HTTP request to the server.
+3. Nginx, the web server, receives the request and forwards it to the application server if necessary.
+4. The application server processes the request, retrieves or manipulates data from the database if needed, and generates a response.
+5. The response is sent back to the web server, which then sends it back to the user's browser.
+6. The browser renders the response, displaying the website to the user.
+
+Issues with this Infrastructure:
+
+1. SPOF (Single Point of Failure): Since all components are hosted on a single server, if the server goes down due to hardware failure, software issues, or other reasons, the entire website becomes inaccessible.
+   
+2. Downtime During Maintenance: When performing maintenance tasks such as deploying new code, updating software packages, or configuring server settings, the web server needs to be restarted. This results in downtime during which the website is inaccessible to users.
+   
+3. Limited Scalability: With only one server handling all requests, the infrastructure cannot easily scale to accommodate increased traffic. If the website experiences a sudden surge in traffic, it may become slow or unresponsive. Additionally, scaling horizontally (adding more servers) is not feasible with this setup.
+
+To address these issues, I would typically introduce redundancy, load balancing, and scalability measures such as using multiple servers, implementing automated deployment processes, and utilizing caching mechanisms to improve performance.

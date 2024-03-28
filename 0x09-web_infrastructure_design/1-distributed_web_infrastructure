@@ -1,0 +1,38 @@
+- 2 application servers
+- 1 load balancer (HAProxy)
+- 1 web server (Nginx)
+- 1 database (MySQL)
+
+1. Load Balancer (HAProxy): The load balancer distributes incoming web traffic across multiple servers to ensure optimal performance, reliability, and scalability. It helps in handling increased traffic and prevents any single server from becoming overwhelmed.
+   
+2. Additional Application Server: Having multiple application servers increases fault tolerance and allows for better handling of incoming requests. If one application server fails, the other can continue serving requests, ensuring high availability.
+   
+3. Database (MySQL): The database stores website data. Introducing a dedicated database server separates concerns and enhances performance, scalability, and manageability.
+   
+4. Web Server (Nginx): Nginx serves as the front-end web server, handling HTTP requests from clients and forwarding them to the application servers. It also serves static content efficiently and can handle SSL termination.
+
+Configuration Load Balancer:
+
+HAProxy will be configured with a Round Robin distribution algorithm. This algorithm evenly distributes incoming requests across all available servers in a circular manner. It doesn't consider server load or response time, making it simple and suitable for our scenario with only two application servers.
+
+Active-Active vs. Active-Passive Setup:
+
+This infrastructure will use an Active-Active setup. In an Active-Active setup, both application servers are actively serving requests simultaneously. This setup provides better resource utilization and scalability compared to an Active-Passive setup, where one server remains idle until failover is needed.
+
+Database Primary-Replica Cluster:
+
+In a Primary-Replica (Master-Slave) cluster, the Primary node (Master) handles both read and write operations, while the Replica node (Slave) replicates data from the Primary node and can handle read-only operations. This setup improves read scalability and provides redundancy for data in case of Primary node failure.
+
+Difference Between Primary and Replica Nodes:
+
+- Primary Node: Handles both read and write operations. It's responsible for processing write requests and ensuring data consistency across the cluster.
+  
+- Replica Node: Replicates data from the Primary node and can handle read-only operations. It provides redundancy and improves read scalability but cannot process write operations directly.
+
+Issues with this Infrastructure:
+
+1. Single Points of Failure (SPOF): The infrastructure still has potential SPOFs, such as the load balancer and database server. If any of these components fail, it could lead to downtime or performance degradation.
+   
+2. Security Issues: There's no mention of a firewall or HTTPS configuration. Lack of proper security measures exposes the infrastructure to vulnerabilities such as unauthorized access or data breaches.
+   
+3. No Monitoring: Without monitoring tools in place, it's challenging to detect and troubleshoot issues efficiently. Monitoring is crucial for maintaining system health, identifying performance bottlenecks, and ensuring uptime.
