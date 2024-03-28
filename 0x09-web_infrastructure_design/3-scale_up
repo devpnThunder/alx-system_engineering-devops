@@ -1,0 +1,27 @@
+1. Server (x2):
+    - One additional server is added to the infrastructure, bringing the total to two servers. This allows for redundancy and fault tolerance in case one server fails. If one server goes down, the other server can continue handling traffic, ensuring high availability of the website.
+
+2. Load-Balancer (HAproxy) Configured as Cluster:
+    - HAproxy is added as a load balancer to distribute incoming traffic across multiple servers. Configuring HAproxy as a cluster ensures high availability and scalability. If one instance of HAproxy fails, another instance can seamlessly take over, preventing any disruption to traffic distribution.
+
+3. Split Components (Web Server, Application Server, Database) with Their Own Servers:
+    - Each component (web server, application server, and database) is hosted on its own dedicated server. This separation allows for better resource management, isolation of services, and scalability. For example:
+        - The web server (e.g., Nginx) serves static content and handles HTTP requests.
+        - The application server (e.g., Node.js, PHP-FPM) executes the application logic and generates dynamic content.
+        - The database server (e.g., MySQL) stores and manages the website's data.
+
+Details:
+
+- Additional Server: Added for redundancy and fault tolerance to ensure high availability of the website.
+
+- Load-Balancer (HAproxy) Cluster: Configured to distribute incoming traffic across multiple servers, improving performance, scalability, and fault tolerance. HAproxy's clustering feature allows for seamless failover and load distribution.
+
+- Split Components: Each component hosted on its own server to improve resource management, scalability, and isolation. Separating components also enhances security by reducing the attack surface and simplifying maintenance and troubleshooting.
+
+Description:
+
+Adding an additional server and configuring HAproxy as a cluster enhances the reliability and scalability of the infrastructure. By distributing traffic across multiple servers and configuring HAproxy as a cluster, the infrastructure can better handle high loads and provide uninterrupted service in case of server failures.
+
+Splitting components onto their own servers allows for better resource allocation and isolation, optimizing performance and security. This setup also facilitates easier scaling of individual components as the website grows in traffic or complexity.
+
+Overall, this infrastructure design aims to improve availability, scalability, and maintainability, ensuring a robust and reliable web hosting environment for www.foobar.com.
