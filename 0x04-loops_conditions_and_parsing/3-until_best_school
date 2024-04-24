@@ -3,8 +3,8 @@
 
 i=0
 
-until [$i -eq 10]
+until [ $i -ge 10 ]
 do
 	echo "Best School"
-	((i++))
+	i=$(( i + 1 ))
 done
