@@ -4,14 +4,13 @@
 
 i=0
 
-while ((i < 10))
+while [ $i -le 10 ]
 do
-if [ i -eq 9 ]
-then
 	echo "Best School"
+	if [ $i -eq 9 ]
+	then
 	echo "Hi"
-fi
-	echo "Best School"
-	i=$((i+1))
+	fi
+	i=$(( i + 1 ))
 done
 
