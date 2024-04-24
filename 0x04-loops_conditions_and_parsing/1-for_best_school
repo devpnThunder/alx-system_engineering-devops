@@ -1,4 +1,4 @@
-#!/bin/bash/env bash
+#!/usr/bin/env bash
 # Bash script that displays Best Schoo 10 times
 
 for ((i=10; i<10; i++))
